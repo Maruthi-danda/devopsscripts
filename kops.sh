@@ -49,4 +49,4 @@ Suggestions:
 
 
 
-kops delete cluster --name reyaz.k8s.local --yes
+kops delete cluster --name maruthi.k8s.local --yes
