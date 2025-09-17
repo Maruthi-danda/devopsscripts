@@ -21,16 +21,16 @@ wget https://github.com/kubernetes/kops/releases/download/v1.32.0/kops-linux-amd
 chmod +x kops-linux-amd64 kubectl
 mv kubectl /usr/local/bin/kubectl
 mv kops-linux-amd64 /usr/local/bin/kops
-aws s3api create-bucket --bucket reyaz-kops-testbkt1433.k8s.local --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1
-aws s3api put-bucket-versioning --bucket reyaz-kops-testbkt1433.k8s.local --region ap-south-1 --versioning-configuration Status=Enabled
-export KOPS_STATE_STORE=s3://reyaz-kops-testbkt1433.k8s.local
-kops create cluster --name=reyaz.k8s.local --zones=ap-south-1a --control-plane-count=1 --control-plane-size=t3.medium --node-count=2 --node-size=t3.small --node-volume-size=20 --control-plane-volume-size=20 --ssh-public-key=my-keypair.pub --image=ami-02d26659fd82cf299 --networking=calico
-kops update cluster --name reyaz.k8s.local --yes --admin
+aws s3api create-bucket --bucket maruthi-kops-testbkt --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1
+aws s3api put-bucket-versioning --bucket maruthi-kops-testbkt --region ap-south-1 --versioning-configuration Status=Enabled
+export KOPS_STATE_STORE=s3://maruthi-kops-testbkt
+kops create cluster --name=maruthi.k8s.local --zones=ap-south-1a --control-plane-count=1 --control-plane-size=t3.medium --node-count=2 --node-size=t3.small --node-volume-size=20 --control-plane-volume-size=20 --ssh-public-key=my-keypair.pub --image=ami-02d26659fd82cf299 --networking=calico
+kops update cluster --name maruthi.k8s.local --yes --admin
 
 
 wq!
 
-export KOPS_STATE_STORE=s3://reyaz-kops-testbkt1433.k8s.local
+export KOPS_STATE_STORE=s3://maruthi-kops-testbkt
 kops validate cluster --wait 10m
 
 
